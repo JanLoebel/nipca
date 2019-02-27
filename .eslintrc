@@ -1,0 +1,29 @@
+{
+  "env": {
+    "es6": false,
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
+  "extends": "eslint:recommended",
+  "plugins": [
+    "standard",
+    "promise"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": 0,
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "nipca",
+  "version": "0.1.0",
+  "description": "Network IP Camera Application Programming Interface (NIPCA) - Client",
+  "scripts": {
+    "example": "node ./examples/example.js",
+    "lint": "eslint src/*",
+    "lint:fix": "eslint --fix src/*",
+    "npm:release": "npm publish"
+  },
+  "author": "Jan Löbel (https://github.com/JanLoebel",
+  "license": "MIT",
+  "dependencies": {
+    "build-url": "^1.3.2",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
