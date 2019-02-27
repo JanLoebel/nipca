@@ -4,7 +4,12 @@ A `node.js` client to connect to NIPCA, which is a protocol for some Network IP 
 ## Description
 * Tested with `node.js 10` and `DLINK DCS-8200LH`
 
-## Example
+## Install
+```
+npm install nipca --save
+```
+
+## Usage
 This is a code example to show how to use this library.
 
 ```
