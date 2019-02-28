@@ -1,18 +1,22 @@
 # Network IP Camera Application Programming Interface (NIPCA) - Client
 A `node.js` client to connect to NIPCA, which is a protocol for some Network IP Cameras e.g.: `DLINK DCS-8200LH`.
 
+[![npm version](https://badge.fury.io/js/nipca.svg)](https://badge.fury.io/js/nipca)
+
 ## Description
-* Tested with `node.js 10` and `DLINK DCS-8200LH`
+Provides a `node.js` client to access NIPCA based IP Cameras. Tested with `node.js 10` and `DLINK DCS-8200LH`.
+
+Some of the cameras seems to support `Basic Authentication` by suppling the credentials by `base64(username:password)`. In my case (with the `DLINK DCS-8200LH`) this wasn't working, therefore I had to reverse engineer the authentication protocol there.
 
 ## Install
-```
+```bash
 npm install nipca --save
 ```
 
 ## Usage
 This is a code example to show how to use this library.
 
-```
+```javascript
 const Nipca = require("nipca");
 
 const baseUrl = "http://192.168.0.10"; // IP of the camera
