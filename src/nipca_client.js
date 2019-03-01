@@ -3,10 +3,6 @@ const buildUrl = require("build-url");
 const HashUtils = require("./utils/hash_utils.js");
 const ParseUtils = require("./utils/response_utils.js");
 
-// TODOs
-// /config/sdcard_download.cgi
-// /config/sdcard_delete.cgi
-
 class NipcaClient {
   constructor(baseUrl, cookie, privateKey) {
     this.baseUrl = baseUrl;
@@ -16,6 +12,10 @@ class NipcaClient {
 
   fetchMotion() {
     return this.fetchJson("/config/motion.cgi");
+  }
+
+  updateMotion(params = { enable: "yes", sensitivity: 50, mbmask: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" }) {
+    return this.fetchJson("/config/motion.cgi", params);
   }
 
   fetchNotifyStream() {
@@ -86,14 +86,6 @@ class NipcaClient {
     return this.fetchJson("/config/led.cgi");
   }
 
-  fetchSystemReboot() {
-    return this.fetchJson("/config/system_reboot.cgi");
-  }
-
-  fetchSystemReset() {
-    return this.fetchJson("/config/system_reset.cgi");
-  }
-
   fetchRTSPUrl() {
     return this.fetchJson("/config/rtspurl.cgi");
   }
@@ -118,12 +110,28 @@ class NipcaClient {
     return this.fetchJson("/config/sdcard.cgi");
   }
   
-  fetchSdCardList() {
-    return this.fetchJson("/config/sdcard_list.cgi");
+  fetchSdCardList(params = { type: "video", path: "/", page: 1, pagesize: 20}) {
+    return this.fetchJson("/config/sdcard_list.cgi", params);
   }
 
-  fetchSdCardFormat() {
-    return this.fetchJson("/config/sdcard_format.cgi");
+  fetchSdCardDownload(params = { type: "video", path: "/", file: "video.avi"}) {
+    return this.fetchBinary("/config/sdcard_download.cgi", params);
+  }
+
+  fetchSdCardDelete(params = { type: "video", path: "/", name: "video.avi"}) {
+    return this.fetchJson("/config/sdcard_delete.cgi", params);
+  }
+
+  doSystemReboot() {
+    return this.fetchJson("/config/system_reboot.cgi", { reboot: "go" });
+  }
+
+  doSystemReset() {
+    return this.fetchJson("/config/system_reset.cgi", { reset: "go" });
+  }
+
+  doSdCardFormat() {
+    return this.fetchJson("/config/sdcard_format.cgi", { format: "go" });
   }
 
   fetchJpegImage() {
